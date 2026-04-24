@@ -1,3 +1,4 @@
+vim.g.maplocalleader = " "
 return {
   {
     "stevearc/conform.nvim",
@@ -40,5 +41,14 @@ return {
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
     },
+  },
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+    end,
   },
 }

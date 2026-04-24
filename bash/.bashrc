@@ -6,11 +6,14 @@
 [[ $- != *i* ]] && return
 
 
-#export PATH="~/opt/gcc/bin/bin/:$PATH"
 
 eval $(python /home/nikgub/scripts/random_verse.py ~/opt/kjv.txt)
 
 #[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
+
+export VCPKG_ROOT=/opt/vcpkg
+export PATH="/opt/vcpkg:$PATH"
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 export GCC_TRUNK='/home/nikgub/opt/gcc/'
 alias gcc-trunk='$GCC_TRUNK/bin/bin/gcc -B $GCC_TRUNK/build/gcc'

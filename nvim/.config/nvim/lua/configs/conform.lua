@@ -3,7 +3,7 @@ local options = {
     lua = { "stylua" },
     cpp = { "clang-formar" },
     c = { "clang-formar" },
-    cmake = { "cmake-lint" },
+    cmake = { "cmakelint" },
     -- css = { "prettier" },
     -- html = { "prettier" },
   },
