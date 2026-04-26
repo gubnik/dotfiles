@@ -1,16 +1,16 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    cpp = { "clang-formar" },
-    c = { "clang-formar" },
-    cmake = { "cmakelint" },
+    cpp = { "clang-format" },
+    c = { "clang-format" },
+    cmake = { "cmake_format" },
+
+    -- I am sometimes a dirty webdev but not often enough
     -- css = { "prettier" },
     -- html = { "prettier" },
   },
 
   format_on_save = {
-    --   -- These options will be passed to conform.format()
-    --   timeout_ms = 500,
     lsp_fallback = true,
   },
 }
