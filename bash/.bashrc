@@ -7,8 +7,8 @@
 
 eval $(python /home/nikgub/scripts/random_verse.py ~/opt/kjv.txt)
 
-# Disabled because it causes issues with sude
-#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
+# Disabled because it causes issues with sudo
+# source /usr/share/blesh/ble.sh
 
 export VCPKG_ROOT=/opt/vcpkg
 export PATH="/opt/vcpkg:$PATH"

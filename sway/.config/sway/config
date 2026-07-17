@@ -4,6 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec dinit
+exec_always --no-startup-id swayidle \
+  -w timeout 300 'swaylock -f' \
+  timeout 360 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f'
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -20,8 +27,7 @@ set $menu wmenu-run
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/nikgub/Pictures/wallpapers/russia_monastery_sunrise.jpg fill
+output * bg /home/nikgub/Pictures/wallpapers/forest_with_sunlight.jpg fill
 
 input * {
   xkb_layout "us,ru"
@@ -55,6 +61,9 @@ bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Locks the screen
+bindsym $mod+Ctrl+L exec swaylock 
 
 #
 # Moving around:
@@ -186,17 +195,30 @@ gaps outer 4
 gaps inner 4
 default_border pixel
 
-#
-# Status Bar:
-#
+
+# class                 border  bground text    indicator child_border
+client.focused          #125146 #058256 #FFFFFF #2F3F3F   #2F4F3F
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
+
 bar {
-  position top
-  status_command i3status #while date +'%Y-%m-%d %X'; do sleep 1; done
   colors {
-    statusline #ffffff
-    background #323232
-    inactive_workspace #32323200 #32323200 #5c5c5c
+    background #1F4F3F
+    statusline #BFFFBF
+    separator  #BFAF46
+
+    focused_workspace  #125146 #058256 #FFFFFF
+    active_workspace   #1F3F2F #1F3F2F #FFFFFF
+    inactive_workspace #1F3F2F #1F3F2F #888888
+    urgent_workspace   #2F343A #900000 #FFFFFF
+    binding_mode       #2F343A #900000 #FFFFFF
   }
+  status_command i3status
+  position top
 }
 
 include /etc/sway/config.d/*
